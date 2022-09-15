@@ -3,7 +3,7 @@ import argparse
 import cv2
 
 
-def scan_pdf(file):
+def scan_pdf(file,no_print=False):
     import numpy as np
     from pdf2image import convert_from_path
     lower_red = np.array([0, 0, 100], dtype="uint8")
@@ -33,7 +33,7 @@ def scan_pdf(file):
             ret.append((page_number, count_red, count_green, count_blue, sum_color))
             # print(page_number, count_red, count_green, count_blue, sum_color)
         page_number = page_number + 1
-    if len(ret) > 0:
+    if not no_print and len(ret) > 0:
         pages_found = ",".join(map(lambda x: str(x[0]), ret));
         print(f"corrupt on pages {pages_found}")
     return ret
