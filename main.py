@@ -14,12 +14,12 @@ def scan_pdf(file,no_print=False):
 
     lower_green = np.array([0, 100, 0], dtype="uint8")
     upper_green = np.array([0, 255, 0], dtype="uint8")
-    pages = convert_from_path(file, 500)
+    pages = convert_from_path(file, 100)
     ret = []
     page_number = 1
     for page in pages:
         arr = np.asarray(page)
-
+        # text = pytesseract.image_to_string(page)
         mask_red = cv2.inRange(arr, lower_red, upper_red)
         mask_blue = cv2.inRange(arr, lower_blue, upper_blue)
         mask_green = cv2.inRange(arr, lower_green, upper_green)
