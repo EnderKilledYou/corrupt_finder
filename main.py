@@ -43,5 +43,4 @@ if __name__ == '__main__':
     ap = argparse.ArgumentParser()
     ap.add_argument("-p", "--pdf", help="path to the pdf")
     args = vars(ap.parse_args())
-
-    print(scan_pdf(args["pdf"]))
+    scan_pdf(args["pdf"])
